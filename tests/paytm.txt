@@ -1,0 +1,16 @@
+{
+    "ORDERID": "hzdrbeuhdx",
+    "MID": "tkogux49985047638244",
+    "TXNID": "20220807111212800110168849703954516",
+    "TXNAMOUNT": "465.37",
+    "PAYMENTMODE": "DC",
+    "CURRENCY": "INR",
+    "TXNDATE": "2022-08-07 17:38:10.0",
+    "STATUS": "TXN_SUCCESS",
+    "RESPCODE": "01",
+    "RESPMSG": "Txn Success",
+    "GATEWAYNAME": "HDFC",
+    "BANKTXNID": "777001140812215",
+    "BANKNAME": "State Bank of India",
+    "CHECKSUMHASH": "PGMktf+52D7xzNvwDGK5Yr375CoT+i1nilBD7CjEUhmsj2Ybf7N9WF3BUbTI2w16pNP0laZkhFw/uPunIUYLG6Lpo1YctSFjT6QMLVwrpOY="
+}

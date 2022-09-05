@@ -1,0 +1,6 @@
+f=open('a.txt','a')
+text=input()
+f.write(text)
+f.close()
+# my=li.copy()
+print(f)
