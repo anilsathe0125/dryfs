@@ -30,21 +30,6 @@
                     <div class="row">
                         <div class="col-md-10 gd-text-sm-center">
                             <div class="sptfl">
-                                <div class="quickFilter">
-                                    <h4 class="quickFilter-title"><i class="fas fa-filter"></i>{{ __('Quick filter') }}
-                                    </h4>
-                                    <ul id="quick_filter">
-                                        <li><a datahref=""><i class="icon-chevron-right pr-2"></i>{{ __('All products') }}
-                                            </a></li>
-                                        <li class=""><a href="javascript:;" data-href="feature"><i
-                                                    class="icon-chevron-right pr-2"></i>{{ __('Featured products') }} </a>
-                                        </li>
-                                        <li class=""><a href="javascript:;" data-href="best"><i
-                                                    class="icon-chevron-right pr-2"></i>{{ __('Best sellers') }} </a></li>
-                                        <li class=""><a href="javascript:;" data-href="top"><i
-                                                    class="icon-chevron-right pr-2"></i>{{ __('Top rated') }} </a></li>
-                                    </ul>
-                                </div>
                                 <div class="shop-sorting">
                                     <label for="sorting">{{ __('Sort by') }}:</label>
                                     <select class="form-control" id="sorting">
@@ -88,27 +73,6 @@
                                 <li
                                     class="has-children  {{ isset($category) && $category->id == $getcategory->id ? 'expanded active' : '' }} ">
                                     <a class="category_search" href="javascript:;" data-href="{{ $getcategory->slug }}">{{ $getcategory->name }}</a>
-
-                                    <ul id="subcategory_list">
-                                        @foreach ($getcategory->subcategories as $getsubcategory)
-                                            <li
-                                                class="{{ isset($subcategory) && $subcategory->id == $getsubcategory->id ? 'active' : '' }}">
-                                                <a class="subcategory" href="javascript:;"
-                                                    data-href="{{ $getsubcategory->slug }}">{{ $getsubcategory->name }}</a>
-
-                                                <ul id="childcategory_list">
-                                                    @foreach ($getsubcategory->childcategories as $getchildcategory)
-                                                        <li
-                                                            class="{{ isset($getchildcategory) && $getchildcategory->id == $getchildcategory->id ? 'active' : '' }}">
-                                                            <a class="childcategory" href="javascript:;"
-                                                                data-href="{{ $getchildcategory->slug }}">{{ $getchildcategory->name }}</a>
-
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        @endforeach
-                                    </ul>
                                 </li>
                             @endforeach
                         </ul>
@@ -155,21 +119,6 @@
                         </section>
                     @endforeach
 
-                    <!-- Widget Brand Filter-->
-                    <section class="widget widget-categories card rounded p-4">
-                        <h3 class="widget-title">{{ __('Filter by Brand') }}</h3>
-                        <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input brand-select" type="checkbox" value="" id="all-brand">
-                            <label class="custom-control-label" for="all-brand">{{ __('All Brands') }}</label>
-                        </div>
-                        @foreach ($brands as $getbrand)
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input brand-select" {{ isset($brand) && $brand->id == $getbrand->id ? 'checked' : '' }} type="checkbox" value="{{ $getbrand->slug }}" id="{{ $getbrand->slug }}">
-                                <label class="custom-control-label" for="{{ $getbrand->slug }}">{{ $getbrand->name }}</label>
-                            </div>
-                        @endforeach
-                    </section>
-
 
                 </aside>
             </div>
@@ -181,16 +130,10 @@
     <form id="search_form" class="d-none" action="{{ route('frontend.catalog') }}" method="GET">
 
         <input type="text" name="maxPrice" id="maxPrice" value="{{ request()->input('maxPrice') ? request()->input('maxPrice') : '' }}">
-        <input type="text" name="minPrice" id="minPrice" value="{{ request()->input('minPrice') ? request()->input('minPrice') : '' }}">
-        <input type="text" name="brand" id="brand" value="{{ isset($brand) ? $brand->slug : '' }}">
-        <input type="text" name="brand" id="brand" value="{{ isset($brand) ? $brand->slug : '' }}">
-        <input type="text" name="category" id="category" value="{{ isset($category) ? $category->slug : '' }}">
-        <input type="text" name="quick_filter" id="quick_filter" value="">
-        <input type="text" name="childcategory" id="childcategory" value="{{ isset($childcategory) ? $childcategory->slug : '' }}">
+        <input type="text" name="minPrice" id="minPrice" value="{{ request()->input('minPrice') ? request()->input('minPrice') : '' }}">        <input type="text" name="category" id="category" value="{{ isset($category) ? $category->slug : '' }}">
         <input type="text" name="page" id="page" value="{{ isset($page) ? $page : '' }}">
         <input type="text" name="attribute" id="attribute" value="{{ isset($attribute) ? $attribute : '' }}">
         <input type="text" name="option" id="option" value="{{ isset($option) ? $option : '' }}">
-        <input type="text" name="subcategory" id="subcategory" value="{{ isset($subcategory) ? $subcategory->slug : '' }}">
         <input type="text" name="sorting" id="sorting" value="{{ isset($sorting) ? $sorting : '' }}">
         <input type="text" name="view_check" id="view_check" value="{{ isset($view_check) ? $view_check : '' }}">
 

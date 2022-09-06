@@ -8,14 +8,9 @@ use App\Models\Setting;
 use App\Models\Currency;
 use App\Helpers\SmsHelper;
 use App\Helpers\PriceHelper;
-use App\Traits\BankCheckout;
 use Illuminate\Http\Request;
 use App\Models\PaymentSetting;
-use App\Traits\MollieCheckout;
-use App\Traits\PaypalCheckout;
-use App\Traits\StripeCheckout;
 use App\Models\ShippingService;
-use App\Traits\PaystackCheckout;
 use Mollie\Laravel\Facades\Mollie;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -25,28 +20,12 @@ use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
-    use StripeCheckout {
-        StripeCheckout::__construct  as private __stripeConstruct;
-    }
 
-    use PaypalCheckout {
-        PaypalCheckout::__construct  as private __paypalConstruct;
-    }
-
-    use MollieCheckout {
-        MollieCheckout::__construct  as private __mollieConstruct;
-    }
-
-    use BankCheckout;
-    use PaystackCheckout;
     use CashOnDeliveryCheckout;
 
     public function __construct()
     {
         $this->middleware('auth');
-        $this->__stripeConstruct();
-        $this->__paypalConstruct();
-        $this->__mollieConstruct();
     }
 
     /**

@@ -601,21 +601,6 @@ $(document).on('click','.wishlist_store',function(e){
            $("#search_button").click();
         });
 
-
-        $(document).on('click','#subcategory_list li a.subcategory',function(){
-            $('#subcategory_list li').removeClass('active');
-            let category = '';
-            $(this).parent().addClass('active');
-           if($(this).attr('data-href')){
-            category = $(this).attr('data-href');
-           }else{
-            category = $(this).attr('data-href');
-           }
-           $("#search_form #childcategory").val('');
-           $("#search_form #subcategory").val(category);
-           $("#search_button").click();
-        });
-
         $(document).on('click','#childcategory_list li a.childcategory',function(){
             $('#childcategory_list li').removeClass('active');
             let childcategory = '';

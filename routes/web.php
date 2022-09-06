@@ -544,12 +544,6 @@ Route::group(['middleware' => 'maintainance'], function(){
             Route::get('/order/print/{id}', [UserOrderController::class, 'printOrder'])->name('user.order.print');
             Route::get('/order/invoice/{id}', [UserOrderController::class, 'details'])->name('user.order.invoice');
 
-            //------------ Wishlist ------------
-            Route::get('/wishlists', [WishlistController::class, 'index'])->name('user.wishlist.index');
-            Route::get('/wishlist/store/{id}', [WishlistController::class, 'store'])->name('user.wishlist.store');
-            Route::get('/wishlist/delete/{id}', [WishlistController::class, 'delete'])->name('user.wishlist.delete');
-            Route::get('/wishlists/delete/all', [WishlistController::class, 'deleteAll'])->name('user.wishlist.delete.all');
-
         });
 
         //------------ Third Party Logins ------------=
@@ -613,18 +607,6 @@ Route::group(['middleware' => 'maintainance'], function(){
         Route::post('/checkout-submit', [CheckoutController::class, 'checkout'])->name('frontend.checkout.submit');
         Route::get('/checkout/success', [CheckoutController::class, 'paymentSuccess'])->name('frontend.checkout.success');
         Route::get('/checkout/cancel', [CheckoutController::class, 'paymentCancel'])->name('frontend.checkout.cancel');
-        Route::get('/paypal/checkout/redirect', [CheckoutController::class, 'paymentRedirect'])->name('frontend.checkout.redirect');
-        Route::get('/checkout/mollie/notify', [CheckoutController::class, 'mollieRedirect'])->name('frontend.checkout.mollie.redirect');
-
-        Route::post('/paytm/notify', [PaytmController::class, 'notify'])->name('frontend.paytm.notify');
-        Route::post('/paytm/submit', [PaytmController::class, 'store'])->name('frontend.paytm.submit');
-
-        Route::post('/mercadopago/submit', [MercadopagoController::class, 'store'])->name('frontend.mercadopago.submit');
-
-        Route::post('/authorize/submit', [AuthorizeController::class, 'store'])->name('frontend.authorize.submit');
-
-        Route::post('/sslcommerz/notify', [SslCommerzController::class, 'notify'])->name('frontend.sslcommerz.notify');
-        Route::post('/sslcommerz/submit', [SslCommerzController::class, 'store'])->name('frontend.sslcommerz.submit');
 
         //------------ Track Order ------------
         Route::get('/track/order', [FrontendController::class, 'trackOrder'])->name('frontend.track.order');

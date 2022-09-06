@@ -49,17 +49,7 @@
                         <div class="text-center">
                             <button class="btn btn-primary margin-bottom-none btn-sm" type="submit">{{ __('Login') }}</button>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 text-center mt-3">
-                                @if ($setting->facebook_check == 1)
-                                    <a class="btn btn-sm facebook-btn" href="{{ route('social.provider', 'facebook') }}"><i class="socicon-facebook"></i>{{ __('Facebook login') }}</a>
-                                @endif
-                                @if ($setting->google_check == 1)
-                                    <a class="btn btn-sm google-btn" href="{{ route('social.provider', 'google') }}"><i class="socicon-google"></i> {{ __('Google login') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
+
                     </div>
                 </form>
             </div>

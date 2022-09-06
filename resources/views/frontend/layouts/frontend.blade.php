@@ -35,23 +35,6 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/rtl.css') }}">
     @endif
 
-    {{-- Google AdSense Start --}}
-    @if ($setting->is_google_adsense == '1')
-        {!! $setting->google_adsense !!}
-    @endif
-    {{-- Google AdSense End --}}
-
-    {{-- Google AnalyTics Start --}}
-    @if ($setting->is_google_analytics == '1')
-        {!! $setting->google_analytics !!}
-    @endif
-    {{-- Google AnalyTics End --}}
-
-    {{-- Facebook pixel  Start --}}
-    @if ($setting->is_facebook_pixel == '1')
-        {!! $setting->facebook_pixel !!}
-    @endif
-    {{-- Facebook pixel End --}}
 
 </head>
 <!-- Body-->
@@ -76,8 +59,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="right-area">
-                            <a class="track-order-link wishlist-mobile d-inline-block d-lg-none" href="{{ route('user.wishlist.index') }}"><i class="icon-heart"></i>{{ __('Wishlist') }}</a>
-
                             <div class="login-register ">
                                 @if (!Auth::user())
                                     <a class="track-order-link mr-0" href="{{ route('user.login') }}">

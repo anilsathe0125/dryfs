@@ -68,8 +68,6 @@
                         </h4>
                     </div>
                     <div class="product-button-group">
-                        <a class="product-button wishlist_store" href="{{route('user.wishlist.store',$item->id)}}"><i class="icon-heart"></i><span>{{__('Wishlist')}}</span></a>
-                        <a class="product-button product_compare" href="javascript:;" data-target="{{route('frontend.compare.product',$item->id)}}"><i class="icon-repeat"></i><span>{{__('Compare')}}</span></a>
                         @if ($item->is_stock())
                         <a class="product-button add_to_single_cart" href="javascript:;" data-target="{{$item->id}}"><i class="icon-shopping-cart"></i><span>{{__('To Cart')}}</span>
                         </a>
