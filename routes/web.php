@@ -17,8 +17,6 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\StaffController;
 use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Payment\PaytmController;
-use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\Backend\BackupController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SliderController;
@@ -45,19 +43,14 @@ use App\Http\Controllers\Backend\FcategoryController;
 use App\Http\Controllers\Backend\PromoCodeController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Payment\AuthorizeController;
 use App\Http\Controllers\Auth\User\RegisterController;
 use App\Http\Controllers\Backend\BulkDeleteController;
 use App\Http\Controllers\Backend\CsvProductController;
 use App\Http\Controllers\Backend\SmsSettingController;
 use App\Http\Controllers\Backend\SubscriberController;
 use App\Http\Controllers\Backend\TranactionController;
-use App\Http\Controllers\Payment\SslCommerzController;
-use App\Http\Controllers\Backend\SubCategoryController;
-use App\Http\Controllers\Payment\MercadopagoController;
 use App\Http\Controllers\Backend\EmailSettingController;
 use App\Http\Controllers\Backend\NotificationController;
-use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Frontend\HomeCustomizeController;
 use App\Http\Controllers\Backend\AttributeOptionController;
@@ -76,7 +69,6 @@ use App\Http\Controllers\User\AccountController as UserAccountController;
 */
 
 Route::prefix('admin')->group(function(){
-
     //------------ AUTH ------------
     Route::get('/login', [LoginController::class, 'showForm'])->name('backend.login');
     Route::post('/login-submit', [LoginController::class, 'login'])->name('backend.login.submit');
@@ -575,11 +567,6 @@ Route::group(['middleware' => 'maintainance'], function(){
         Route::get('/popular/category/get/{slug}/{type}/{check}', [HomeCustomizeController::class, 'getCategory'])->name('frontend.popular.category');
         Route::get('/popular/get/type/{type}', [HomeCustomizeController::class, 'getProducts'])->name('frontend.get.product');
 
-        //------------ Compare Product ------------
-        Route::get('/compare/product/{id}', [CompareController::class, 'compare'])->name('frontend.compare.product');
-        Route::get('/compare/remove/{id}', [CompareController::class, 'compareRemove'])->name('frontend.compare.remove');
-        Route::get('/compare/products', [CompareController::class, 'compareProducts'])->name('frontend.compare.index');
-
         //------------ Cart ------------
         Route::get('/cart', [CartController::class, 'index'])->name('frontend.cart');
         Route::get('/front/cart/clear', [CartController::class, 'cartClear'])->name('frontend.cart.clear');
@@ -630,6 +617,3 @@ Route::group(['middleware' => 'maintainance'], function(){
     });
     // ************************************ GLOBAL LOCALIZATION ENDS **************************************
 });
-
-
-Route::get('/website/maintainance', [FrontendController::class, 'maintenance'])->name('frontend.maintainance');

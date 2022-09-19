@@ -114,7 +114,7 @@ class OrderController extends Controller
             $sms->sendSms($user_number, "'order_status'");
         }
 
-        return redirect()->route('backend.order.index')->withSuccess(_('Status Updated Successfully'));
+        return redirect()->route('backend.order.index')->withSuccess(__('Status Updated Successfully'));
     }
 
     /**
@@ -175,22 +175,6 @@ class OrderController extends Controller
                     'order_id' => $order->id
                 ]);
             }
-        }
-    }
-
-    /**
-     * Update promo code usage quantity.
-     *
-     * @param \App\Models\Order $order
-     * @return void
-    */
-    public function setPromoCode($order)
-    {
-        $discount = json_decode($order->discount, true);
-        if ($discount != null) {
-            $code = PromoCode::find($discount['code']['id']);
-            $code->no_of_times--;
-            $code->update();
         }
     }
 
