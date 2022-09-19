@@ -61,7 +61,7 @@
 
                   <div class="form-group  col-md-6">
                     <label for="category_id">{{ __('Select Category') }} *</label>
-                    <select name="category_id" id="category_id" data-href="{{ route('backend.get.subcategories') }}" class="form-control select2">
+                    <select name="category_id" id="category_id" class="form-control select2">
                         <option value="" selected >{{ __('Select One') }}</option>
                         @foreach ($categories as $cat)
                             <option value="{{ $cat->id }}">{{ $cat->name }}</option>
